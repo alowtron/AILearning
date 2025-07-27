@@ -1,0 +1,10 @@
+body {
+  margin: 0;
+  background-color: black;
+  overflow: hidden;
+  text-align: center;
+}
+
+#mainCanvas {
+  background-color: rgb(31, 31, 31); 
+}
