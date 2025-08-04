@@ -20,9 +20,9 @@ class Car {
     this.controls = new Controls()
   }
 
-  update() {
+  update(roadBorder) {
     this.#move()
-    this.sensor.update()
+    this.sensor.update(roadBorder)
   }
 
   #move() {
