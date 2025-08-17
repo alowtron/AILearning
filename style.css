@@ -5,6 +5,10 @@ body {
   text-align: center;
 }
 
+#networkCanvas {
+  background-color: rgb(82, 82, 82); 
+}
+
 #mainCanvas {
   background-color: rgb(31, 31, 31); 
 }
