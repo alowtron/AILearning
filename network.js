@@ -1,3 +1,5 @@
+// some of this is not my code
+
 class NeuralNetwork{
     constructor(neuronCounts){
         this.levels=[];

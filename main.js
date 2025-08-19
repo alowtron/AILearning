@@ -22,7 +22,9 @@ if (localStorage.getItem("bestBrain")) {
 }
 
 const traffic = [
-  new Car(road.getLaneCenter(4), -100, 30, 50, "DUMMY", 1.5)
+  new Car(road.getLaneCenter(4), -100, 30, 50, "DUMMY", 1.5),
+  new Car(road.getLaneCenter(3), -300, 30, 50, "DUMMY", 1.5),
+  new Car(road.getLaneCenter(5), -300, 30, 50, "DUMMY", 1.5),
 ]
 
 
