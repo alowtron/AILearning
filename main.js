@@ -13,8 +13,16 @@ const road = new Road(mainCanvas.width / 2, mainCanvas.width * 0.95)
 // const car = new Car(road.getLaneCenter(4), 100, 30, 50, "AI", 4)
 const numberOfCars = 100
 const cars = generateCars(numberOfCars)
+
+let bestCar = cars[0]
+if (localStorage.getItem("bestBrain")) {
+  bestCar.brain = JSON.parse(
+    localStorage.getItem("bestBrain")
+  )
+}
+
 const traffic = [
-  new Car(road.getLaneCenter(1), -100, 30, 50, "DUMMY", 1.5)
+  new Car(road.getLaneCenter(4), -100, 30, 50, "DUMMY", 1.5)
 ]
 
 
@@ -28,6 +36,16 @@ function generateCars(numberOfCars) {
   return cars
 }
 
+function save() {
+  localStorage.setItem("bestBrain",
+    JSON.stringify(bestCar.brain)
+  )
+}
+
+function discard() {
+  localStorage.removeItem("bestBrain")
+}
+
 function animate() {
   for (let i = 0; i < traffic.length; i++) {
     traffic[i].update(road.borders, [])
@@ -35,25 +53,34 @@ function animate() {
   for (let i = 0; i < cars.length; i++) {
     cars[i].update(road.borders, traffic)
   }
+
+  bestCar =  cars.find(
+    c => c.y == Math.min(
+      ...cars.map(c => c.y)
+    )
+  )
   // car.update(road.borders, traffic)
   mainCanvas.height = window.innerHeight
   networkCanvas.height = window.innerHeight
 
 
   mainCtx.save()
-  mainCtx.translate(0, -cars[0].y + mainCanvas.height * 0.75)
+  mainCtx.translate(0, -bestCar.y + mainCanvas.height * 0.75)
 
   road.draw(mainCtx)
   for (let i = 0; i < traffic.length; i++) {
     traffic[i].draw(mainCtx, "blue")
   }
+  mainCtx.globalAlpha = 0.3
   for (let i = 0; i < cars.length; i++) {
     cars[i].draw(mainCtx, "yellow")
   }
+  mainCtx.globalAlpha = 1
+  bestCar.draw(mainCtx, "yellow", true)
   // car.draw(mainCtx, "yellow")
 
   mainCtx.restore()
 
-  Visualizer.drawNetwork(networkCtx, cars[0].brain)
+  Visualizer.drawNetwork(networkCtx, bestCar.brain)
   requestAnimationFrame(animate)
 }

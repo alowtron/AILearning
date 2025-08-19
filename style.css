@@ -2,7 +2,25 @@ body {
   margin: 0;
   background-color: black;
   overflow: hidden;
-  text-align: center;
+  /* text-align: center; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#verticalButtons {
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  padding: 5px;
+  margin: 2px;
+  cursor: pointer;
+}
+
+button:hover  {
+  background-color: darkgrey;
 }
 
 #networkCanvas {
