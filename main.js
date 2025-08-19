@@ -21,7 +21,7 @@ if (localStorage.getItem("bestBrain")) {
       localStorage.getItem("bestBrain")
     )
     if (i != 0) {
-      NeuralNetwork.mutate(cars[i].brain, 0.5)
+      NeuralNetwork.mutate(cars[i].brain, 0.3)
     }
   }
   
@@ -30,15 +30,15 @@ if (localStorage.getItem("bestBrain")) {
 const traffic = [
   new Car(road.getLaneCenter(4), -100, 30, 50, "DUMMY", 1.5),
   new Car(road.getLaneCenter(3), -700, 30, 50, "DUMMY", 1.5),
-  new Car(road.getLaneCenter(5), -1100, 30, 50, "DUMMY", 1.5),
-  new Car(road.getLaneCenter(2), -700, 30, 50, "DUMMY", 1.5),
-  new Car(road.getLaneCenter(6), -1100, 30, 50, "DUMMY", 1.5),
+  new Car(road.getLaneCenter(2), -1100, 30, 50, "DUMMY", 1.5),
+  // new Car(road.getLaneCenter(2), -700, 30, 50, "DUMMY", 1.5),
+  new Car(road.getLaneCenter(1), -1100, 30, 50, "DUMMY", 1.5),
   new Car(road.getLaneCenter(3), -1555, 30, 50, "DUMMY", 1.5),
-  new Car(road.getLaneCenter(5), -1111, 30, 50, "DUMMY", 1.5),
+  new Car(road.getLaneCenter(1), -1111, 30, 50, "DUMMY", 1.5),
 
   new Car(road.getLaneCenter(4), 500, 30, 50, "DUMMY", 1.5),
   new Car(road.getLaneCenter(3), 700, 30, 50, "DUMMY", 1.5),
-  new Car(road.getLaneCenter(5), 1100, 30, 50, "DUMMY", 1.5),
+  new Car(road.getLaneCenter(1), 1100, 30, 50, "DUMMY", 1.5),
 ]
 
 
@@ -47,7 +47,7 @@ animate()
 function generateCars(numberOfCars) {
   const cars = []
   for (let i = 0; i < numberOfCars; i++) {
-    cars.push(new Car(road.getLaneCenter(4), 100, 30, 50, "AI", 4))
+    cars.push(new Car(road.getLaneCenter(2), 100, 30, 50, "AI", 4))
   }
   return cars
 }
